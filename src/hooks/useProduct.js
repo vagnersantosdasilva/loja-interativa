@@ -24,8 +24,23 @@ export  const useProduct = ()=>{
         }
     ]);
 
-    const add = (product)=>{
+    const add = (prod)=>{
 
+        let product =  {
+            id : products.length+1,
+            name:prod.nome,
+            fabricante: {
+                name:prod.fabricante,
+                categoria:prod.categoria
+            },
+            quantidade:prod.quantidade,
+            preco:prod.preco
+        }
+        console.log(product);
+        products.push(product);
+        setProducts(products);
+        console.log(products);
+        return products;
     }
 
     const list = () =>{
@@ -38,6 +53,8 @@ export  const useProduct = ()=>{
         setProducts(prod);
         return prod
     }
+
+
 
     return {products,list,add,remove};
 }
