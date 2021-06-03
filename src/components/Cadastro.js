@@ -44,7 +44,7 @@ const Cadastro = ()=>{
                             <form >
                                 <div className="form-group">
                                     <label htmlFor="nome"><strong>Nome do produto</strong></label>
-                                    <input type="text" className="form-control" name="nome" value={product.name}
+                                    <input type="text" className="form-control" name="nome" value={product.id!==0?product.name:''}
                                     onChange={onInputChangeHandler}
                                     />
                                 </div>
@@ -52,7 +52,7 @@ const Cadastro = ()=>{
                                 <div className="form-group">
                                     <label htmlFor="fabricante">Fabricante</label>
                                     <select name="cars" id="fabricante"  name = "fabricante" className="form-control "
-                                            value={product.fabricante!==null?product.fabricante:''} onChange={onInputChangeHandler}>
+                                            value={product.id!==0?product.fabricante.name:''} onChange={onInputChangeHandler}>
                                         <option >Selecione o fabricante</option>
                                         <option value="f1">Fabricante 1</option>
                                         <option value="f2">Fabricante 2</option>
@@ -65,7 +65,7 @@ const Cadastro = ()=>{
                                     <label htmlFor="categoria">Categoria</label>
                                     <select name="cars" id="fabricante"  name = "categoria"
                                             className="form-control " onChange={onInputChangeHandler}
-                                            value={product.categoria!==null?product.categoria:''}>
+                                            value={product.id!==0?product.fabricante.categoria:''}>
                                         <option >Selecione uma Categoria</option>
                                         <option value="c1">Categoria 1</option>
                                         <option value="c2">Categoria 2</option>
