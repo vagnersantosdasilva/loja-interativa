@@ -12,13 +12,13 @@ export  const useProduct = ()=>{
         },
         {   id:2,
             name:"Product2",
-            fabricante: { name:"f1",categoria:"c1"},
+            fabricante: { name:"f3",categoria:"c1"},
             quantidade:10,
             preco:"R$10"
         },
         {   id:3,
             name:"Product3",
-            fabricante: { name:"f1",categoria:"c1"},
+            fabricante: { name:"f4",categoria:"c1"},
             quantidade:10,
             preco:"R$10"
         }

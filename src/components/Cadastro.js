@@ -3,7 +3,7 @@ import {useProduct} from "../hooks/useProduct";
 
 const Cadastro = ()=>{
 
-    const [product,setProduct] = useState( {id:1,nome:"teste",fabricante:[],categoria:[],quantidade:0});
+    const [product,setProduct] = useState( {id:0,nome:"",fabricante:{},categoria:"",quantidade:0,preco:0});
     const [list,setList] = useState(null);
     const service = useProduct();
 
@@ -20,7 +20,7 @@ const Cadastro = ()=>{
 
     }
     const onEditHandler=(product)=>{
-        alert(product.id);
+        setProduct(product);
     }
 
     const onDeleteHandler=(product)=>{
@@ -37,25 +37,26 @@ const Cadastro = ()=>{
                             <h4>Cadastro de Produtos</h4>
                             <form >
                                 <div className="form-group">
-                                    <label htmlFor="email"><strong>Nome do produto</strong></label>
-                                    <input type="nome" className="form-control" name="nome" value={product.id!==0?product.name:''}/>
+                                    <label htmlFor="nome"><strong>Nome do produto</strong></label>
+                                    <input type="text" className="form-control" name="nome" value={product.id!==0?product.name:''}/>
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="fabricante">Fabricante</label>
-                                    <select name="cars" id="fabricante"  name = "fabricante" className="form-control ">
-                                        <option value="f1">Selecione um fabricante</option>
+                                    <select name="cars" id="fabricante"  name = "fabricante" className="form-control "
+                                            value={product.id!==0?product.fabricante.name:''}>
+                                        <option >Selecione o fabricante</option>
                                         <option value="f1">Fabricante 1</option>
                                         <option value="f2">Fabricante 2</option>
                                         <option value="f3">Fabricante 3</option>
-                                        <option value="f4">Audi</option>
+                                        <option value="f4">Fabricante 4</option>
                                     </select>
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="categoria">Categoria</label>
                                     <select name="cars" id="fabricante"  name = "fabricante" className="form-control ">
-                                        <option value="f1">Selecione uma Categoria</option>
+                                        <option >Selecione uma Categoria</option>
                                         <option value="c1">Categoria 1</option>
                                         <option value="c2">Categoria 2</option>
                                         <option value="c3">Categoria 3</option>
@@ -65,10 +66,21 @@ const Cadastro = ()=>{
 
                                 <div className="form-group">
                                     <label htmlFor="quantidade"><strong>Quantidade</strong></label>
-                                    <input type="text" name="quantidade" className="form-control" />
+                                    <input type="text" name="quantidade" className="form-control"
+                                           value ={product.id!==0?product.quantidade:''} />
 
                                 </div>
-                                <button  className="btn btn-info" onClick={onSubmitHandler}>Adicionar Produto</button>
+
+                                <div className="form-group">
+                                    <label htmlFor="preco"><strong>Valor Unidade</strong></label>
+                                    <input type="text" name="preco" className="form-control"
+                                           value ={product.id!==0?product.preco:''}/>
+
+                                </div>
+
+                                <button  className="btn btn-info" onClick={onSubmitHandler}>
+                                    {product.id===0?'Adicionar Produto':'Alterar'}
+                                </button>
                             </form>
 
                         </div>
