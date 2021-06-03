@@ -1,7 +1,9 @@
+import {useState} from "react";
 
 export  const useProduct = ()=>{
 
-    let products = [
+
+    const [products ,setProducts] = useState( [
         {   id:1,
             name:"Product1",
             fabricante: { name:"f1",categoria:"c1"},
@@ -20,7 +22,7 @@ export  const useProduct = ()=>{
             quantidade:10,
             preco:"R$10"
         }
-    ]
+    ]);
 
     const add = (product)=>{
 
@@ -30,6 +32,13 @@ export  const useProduct = ()=>{
         return products;
     }
 
-    return {list,add};
+    const remove = (product)=>{
+
+        let prod = products.filter(i => i.id!==product.id);
+        setProducts(prod);
+        return prod
+    }
+
+    return {products,list,add,remove};
 }
 
